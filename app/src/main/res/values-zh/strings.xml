@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">GacetaCU</string>
+
+    <string name="nav_news">新闻</string>
+    <string name="nav_schedule">课程表</string>
+    <string name="nav_transport">校园巴士 / 饮水站</string>
+    <string name="nav_map">校园地图</string>
+    <string name="nav_profile">个人资料</string>
+    <string name="nav_settings">设置</string>
+
+    <string name="news_title">UNAM公报</string>
+    <string name="news_filter_faculty">按学院筛选</string>
+    <string name="news_filter_name">按名称搜索</string>
+    <string name="news_all_faculties">全部（校长办公室）</string>
+    <string name="news_empty">暂无已保存的新闻，下拉刷新。</string>
+    <string name="news_refresh">刷新</string>
+    <string name="news_read_more">在网站上阅读</string>
+    <string name="news_saved_locally">本地保存（最多15条）</string>
+
+    <string name="schedule_title">课程表生成器</string>
+    <string name="schedule_pick_faculty">选择你的学院</string>
+    <string name="schedule_add_class">添加课程</string>
+    <string name="schedule_class_name">科目</string>
+    <string name="schedule_day">星期</string>
+    <string name="schedule_start">开始时间</string>
+    <string name="schedule_end">结束时间</string>
+    <string name="schedule_room">教室</string>
+    <string name="schedule_save">保存课程表</string>
+    <string name="schedule_saved">课程表已本地保存</string>
+    <string name="schedule_delete">删除</string>
+    <string name="schedule_empty">尚未添加课程</string>
+
+    <string name="profile_title">你的资料（本地）</string>
+    <string name="profile_username">用户名</string>
+    <string name="profile_faculty">学院</string>
+    <string name="profile_create">创建用户</string>
+    <string name="profile_edit">编辑</string>
+    <string name="profile_no_login">无需登录。所有信息仅保存在此设备上。</string>
+    <string name="profile_saved">资料已保存</string>
+
+    <string name="transport_pumabus">校园巴士路线</string>
+    <string name="transport_pumaagua">饮水站</string>
+    <string name="transport_select_route">选择路线</string>
+    <string name="transport_no_svg">该路线暂无地图</string>
+
+    <string name="map_title">大学城地图</string>
+    <string name="map_filter_faculty">按学院筛选建筑</string>
+    <string name="map_show_all">显示全部</string>
+
+    <string name="settings_title">设置</string>
+    <string name="settings_language">语言</string>
+    <string name="settings_language_es">西班牙语</string>
+    <string name="settings_language_en">英语</string>
+    <string name="settings_language_zh">中文</string>
+    <string name="settings_restart_notice">应用将重启以应用语言设置</string>
+
+    <string name="close">关闭</string>
+    <string name="cancel">取消</string>
+    <string name="save">保存</string>
+</resources>

@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">GacetaCU</string>
+
+    <string name="nav_news">News</string>
+    <string name="nav_schedule">Schedule</string>
+    <string name="nav_transport">PumaBus / PumaAgua</string>
+    <string name="nav_map">CU Map</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_settings">Settings</string>
+
+    <string name="news_title">Gaceta UNAM</string>
+    <string name="news_filter_faculty">Filter by faculty</string>
+    <string name="news_filter_name">Search by name</string>
+    <string name="news_all_faculties">All (Rectory)</string>
+    <string name="news_empty">No saved news yet. Pull to refresh.</string>
+    <string name="news_refresh">Refresh</string>
+    <string name="news_read_more">Read on site</string>
+    <string name="news_saved_locally">Saved locally (max 15)</string>
+
+    <string name="schedule_title">Schedule builder</string>
+    <string name="schedule_pick_faculty">Select your faculty</string>
+    <string name="schedule_add_class">Add class</string>
+    <string name="schedule_class_name">Subject</string>
+    <string name="schedule_day">Day</string>
+    <string name="schedule_start">Start time</string>
+    <string name="schedule_end">End time</string>
+    <string name="schedule_room">Room</string>
+    <string name="schedule_save">Save schedule</string>
+    <string name="schedule_saved">Schedule saved locally</string>
+    <string name="schedule_delete">Delete</string>
+    <string name="schedule_empty">No classes added yet</string>
+
+    <string name="profile_title">Your profile (local)</string>
+    <string name="profile_username">Username</string>
+    <string name="profile_faculty">Faculty</string>
+    <string name="profile_create">Create user</string>
+    <string name="profile_edit">Edit</string>
+    <string name="profile_no_login">No login required. Everything is stored only on this device.</string>
+    <string name="profile_saved">Profile saved</string>
+
+    <string name="transport_pumabus">PumaBus routes</string>
+    <string name="transport_pumaagua">PumaAgua stations</string>
+    <string name="transport_select_route">Select a route</string>
+    <string name="transport_no_svg">No map available for this route yet</string>
+
+    <string name="map_title">Ciudad Universitaria Map</string>
+    <string name="map_filter_faculty">Filter buildings by faculty</string>
+    <string name="map_show_all">Show all</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_es">Spanish</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_zh">Chinese</string>
+    <string name="settings_restart_notice">The app will restart to apply the language</string>
+
+    <string name="close">Close</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+</resources>

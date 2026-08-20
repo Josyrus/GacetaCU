@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">GacetaCU</string>
+
+    <!-- Navegación -->
+    <string name="nav_news">Noticias</string>
+    <string name="nav_schedule">Horario</string>
+    <string name="nav_transport">PumaBus / PumaAgua</string>
+    <string name="nav_map">Mapa CU</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="nav_settings">Ajustes</string>
+
+    <!-- Noticias -->
+    <string name="news_title">Gaceta UNAM</string>
+    <string name="news_filter_faculty">Filtrar por facultad</string>
+    <string name="news_filter_name">Buscar por nombre</string>
+    <string name="news_all_faculties">Todas (Rectoría)</string>
+    <string name="news_empty">No hay noticias guardadas todavía. Desliza para actualizar.</string>
+    <string name="news_refresh">Actualizar</string>
+    <string name="news_read_more">Leer en el sitio</string>
+    <string name="news_saved_locally">Guardadas localmente (máx. 15)</string>
+
+    <!-- Horario -->
+    <string name="schedule_title">Generador de horario</string>
+    <string name="schedule_pick_faculty">Selecciona tu facultad</string>
+    <string name="schedule_add_class">Agregar clase</string>
+    <string name="schedule_class_name">Materia</string>
+    <string name="schedule_day">Día</string>
+    <string name="schedule_start">Hora inicio</string>
+    <string name="schedule_end">Hora fin</string>
+    <string name="schedule_room">Salón</string>
+    <string name="schedule_save">Guardar horario</string>
+    <string name="schedule_saved">Horario guardado localmente</string>
+    <string name="schedule_delete">Eliminar</string>
+    <string name="schedule_empty">Aún no has agregado clases</string>
+
+    <!-- Perfil -->
+    <string name="profile_title">Tu perfil (local)</string>
+    <string name="profile_username">Nombre de usuario</string>
+    <string name="profile_faculty">Facultad</string>
+    <string name="profile_create">Crear usuario</string>
+    <string name="profile_edit">Editar</string>
+    <string name="profile_no_login">No se requiere inicio de sesión. Todo se guarda solo en este dispositivo.</string>
+    <string name="profile_saved">Perfil guardado</string>
+
+    <!-- Transporte -->
+    <string name="transport_pumabus">Rutas PumaBus</string>
+    <string name="transport_pumaagua">Módulos PumaAgua</string>
+    <string name="transport_select_route">Selecciona una ruta</string>
+    <string name="transport_no_svg">No hay mapa disponible para esta ruta todavía</string>
+
+    <!-- Mapa -->
+    <string name="map_title">Mapa de Ciudad Universitaria</string>
+    <string name="map_filter_faculty">Filtrar edificios por facultad</string>
+    <string name="map_show_all">Mostrar todos</string>
+
+    <!-- Ajustes -->
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_language">Idioma</string>
+    <string name="settings_language_es">Español</string>
+    <string name="settings_language_en">Inglés</string>
+    <string name="settings_language_zh">Chino</string>
+    <string name="settings_restart_notice">La app se reiniciará para aplicar el idioma</string>
+
+    <string name="close">Cerrar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="save">Guardar</string>
+</resources>

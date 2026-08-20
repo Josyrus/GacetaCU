@@ -1,0 +1,20 @@
+<!--
+  Placeholder de la Ruta 1 de PumaBus. Reemplaza el <path> con la geometría real
+  trazada desde el mapa oficial de PumaBus (puedes convertir un SVG real con
+  Android Studio: botón derecho en res/drawable > New > Vector Asset > Local file (SVG)).
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="300dp"
+    android:viewportWidth="300"
+    android:viewportHeight="300">
+    <path
+        android:pathData="M40,260 L80,180 L140,180 L170,100 L230,100 L260,40"
+        android:strokeColor="#0047AB"
+        android:strokeWidth="6"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path android:pathData="M40,260 m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0" android:fillColor="#0047AB" />
+    <path android:pathData="M260,40 m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0" android:fillColor="#0047AB" />
+</vector>

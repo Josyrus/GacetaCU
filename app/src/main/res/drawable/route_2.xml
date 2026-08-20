@@ -1,0 +1,16 @@
+<!-- Placeholder de la Ruta 2 de PumaBus. Reemplaza con la geometría real. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="300dp"
+    android:viewportWidth="300"
+    android:viewportHeight="300">
+    <path
+        android:pathData="M30,60 L100,60 L100,150 L200,150 L200,240 L270,240"
+        android:strokeColor="#B22222"
+        android:strokeWidth="6"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path android:pathData="M30,60 m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0" android:fillColor="#B22222" />
+    <path android:pathData="M270,240 m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0" android:fillColor="#B22222" />
+</vector>
