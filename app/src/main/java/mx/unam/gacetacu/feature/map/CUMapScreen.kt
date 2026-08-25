@@ -13,13 +13,37 @@ import mx.unam.gacetacu.R
 import mx.unam.gacetacu.core.model.Faculty
 import mx.unam.gacetacu.core.model.FacultyCatalog
 import org.osmdroid.config.Configuration
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory
+import org.osmdroid.tileprovider.tilesource.OnlineTileSourceBase
+import org.osmdroid.util.MapTileIndex
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
+import androidx.compose.material3.ExperimentalMaterial3Api
 
 private val CU_CENTER = GeoPoint(19.3300, -99.1840)
+@OptIn(ExperimentalMaterial3Api::class)
+private val CYCLOSM = object : OnlineTileSourceBase(
+    "CyclOSM",
+    0,
+    20,
+    256,
+    ".png",
+    arrayOf(
+        "https://a.tile-cyclosm.openstreetmap.fr/cyclosm/",
+        "https://b.tile-cyclosm.openstreetmap.fr/cyclosm/",
+        "https://c.tile-cyclosm.openstreetmap.fr/cyclosm/"
+    )
+) {
+    override fun getTileURLString(pMapTileIndex: Long): String {
+        return baseUrl +
+                MapTileIndex.getZoom(pMapTileIndex) + "/" +
+                MapTileIndex.getX(pMapTileIndex) + "/" +
+                MapTileIndex.getY(pMapTileIndex) +
+                mImageFilenameEnding
+    }
+}
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CUMapScreen() {
     val context = LocalContext.current
@@ -27,10 +51,13 @@ fun CUMapScreen() {
     var menuExpanded by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
-        Configuration.getInstance().load(context, PreferenceManager.getDefaultSharedPreferences(context))
+        Configuration.getInstance().load(
+            context,
+            PreferenceManager.getDefaultSharedPreferences(context))
         Configuration.getInstance().userAgentValue = context.packageName
         // Usa el caché interno de la app para evitar pedir permisos de almacenamiento externo.
-        Configuration.getInstance().osmdroidTileCache = context.cacheDir.resolve("osmdroid/tiles")
+        Configuration.getInstance().osmdroidTileCache = context.cacheDir.resolve(
+            "osmdroid/tiles")
     }
 
     Column(Modifier.fillMaxSize()) {
@@ -58,7 +85,7 @@ fun CUMapScreen() {
             modifier = Modifier.fillMaxSize(),
             factory = { ctx ->
                 MapView(ctx).apply {
-                    setTileSource(TileSourceFactory.MAPNIK)
+                    setTileSource(CYCLOSM)
                     setMultiTouchControls(true)
                     controller.setZoom(16.0)
                     controller.setCenter(CU_CENTER)
