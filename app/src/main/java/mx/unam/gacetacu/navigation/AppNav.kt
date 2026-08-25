@@ -1,4 +1,4 @@
-package mx.unam.gacetacu.navigation
+    package mx.unam.gacetacu.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -19,7 +19,7 @@ import mx.unam.gacetacu.feature.profile.ProfileScreen
 import mx.unam.gacetacu.feature.schedule.ScheduleScreen
 import mx.unam.gacetacu.feature.settings.SettingsScreen
 import mx.unam.gacetacu.feature.transport.TransportScreen
-
+import androidx.compose.foundation.layout.padding
 sealed class Dest(val route: String, val labelRes: Int, val icon: androidx.compose.ui.graphics.vector.ImageVector) {
     data object News : Dest("news", R.string.nav_news, Icons.Default.Newspaper)
     data object Schedule : Dest("schedule", R.string.nav_schedule, Icons.Default.CalendarMonth)
