@@ -1,4 +1,4 @@
-    package mx.unam.gacetacu.navigation
+package mx.unam.gacetacu.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -20,6 +20,11 @@ import mx.unam.gacetacu.feature.schedule.ScheduleScreen
 import mx.unam.gacetacu.feature.settings.SettingsScreen
 import mx.unam.gacetacu.feature.transport.TransportScreen
 import androidx.compose.foundation.layout.padding
+import mx.unam.gacetacu.core.data.db.entities.NewsEntity
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import mx.unam.gacetacu.feature.news.ArticleReaderScreen
 sealed class Dest(val route: String, val labelRes: Int, val icon: androidx.compose.ui.graphics.vector.ImageVector) {
     data object News : Dest("news", R.string.nav_news, Icons.Default.Newspaper)
     data object Schedule : Dest("schedule", R.string.nav_schedule, Icons.Default.CalendarMonth)
@@ -27,6 +32,8 @@ sealed class Dest(val route: String, val labelRes: Int, val icon: androidx.compo
     data object Map : Dest("map", R.string.nav_map, Icons.Default.Map)
     data object Profile : Dest("profile", R.string.nav_profile, Icons.Default.Person)
     data object Settings : Dest("settings", R.string.nav_settings, Icons.Default.Settings)
+
+    data object Article : Dest("article", R.string.nav_news, Icons.Default.Article)
 }
 
 private val bottomItems = listOf(Dest.News, Dest.Schedule, Dest.Transport, Dest.Map, Dest.Profile)
@@ -34,12 +41,15 @@ private val bottomItems = listOf(Dest.News, Dest.Schedule, Dest.Transport, Dest.
 @Composable
 fun AppNavHost() {
     val navController = rememberNavController()
-
+    var selectedArticle by remember {
+        mutableStateOf<NewsEntity?>(null)
+    }
     Scaffold(
         bottomBar = {
             NavigationBar {
                 val backStackEntry by navController.currentBackStackEntryAsState()
                 val currentDestination = backStackEntry?.destination
+                var selectedArticle by remember { mutableStateOf<NewsEntity?>(null) }
                 bottomItems.forEach { dest ->
                     NavigationBarItem(
                         selected = currentDestination?.hierarchy?.any { it.route == dest.route } == true,
@@ -62,12 +72,32 @@ fun AppNavHost() {
             startDestination = Dest.News.route,
             modifier = androidx.compose.ui.Modifier.padding(padding),
         ) {
-            composable(Dest.News.route) { NewsScreen(onOpenSettings = { navController.navigate(Dest.Settings.route) }) }
+            composable(Dest.News.route) {
+                NewsScreen(
+                    onOpenSettings = {
+                        navController.navigate(Dest.Settings.route)
+                    },
+                    onOpenArticle = { news ->
+                        selectedArticle = news
+                        navController.navigate(Dest.Article.route)
+                    }
+                )
+            }
             composable(Dest.Schedule.route) { ScheduleScreen() }
             composable(Dest.Transport.route) { TransportScreen() }
             composable(Dest.Map.route) { CUMapScreen() }
             composable(Dest.Profile.route) { ProfileScreen() }
             composable(Dest.Settings.route) { SettingsScreen() }
+            composable(Dest.Article.route) {
+                selectedArticle?.let { news ->
+                    ArticleReaderScreen(
+                        news = news,
+                        onBack = {
+                            navController.popBackStack()
+                        }
+                    )
+                }
+            }
         }
     }
 }

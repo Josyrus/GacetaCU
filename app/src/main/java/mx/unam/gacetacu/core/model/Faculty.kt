@@ -30,7 +30,7 @@ object FacultyCatalog {
     // has verificado y el repositorio simplemente la omitirá al hacer scraping.
     val ALL: List<Faculty> = listOf(
         RECTORIA,
-        Faculty("ingenieria", "Facultad de Ingeniería", null, 19.3316, -99.1791),
+        Faculty("ingenieria", "Facultad de Ingeniería","https://t.me/s/FIUNAM_MX", 19.3316, -99.1791),
         Faculty("ciencias", "Facultad de Ciencias", null, 19.3288, -99.1809),
         Faculty("medicina", "Facultad de Medicina", null, 19.3287, -99.1858),
         Faculty("derecho", "Facultad de Derecho", null, 19.3315, -99.1863),

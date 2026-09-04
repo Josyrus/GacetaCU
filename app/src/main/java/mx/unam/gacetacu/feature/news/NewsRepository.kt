@@ -51,25 +51,96 @@ class NewsRepository(private val newsDao: NewsDao) {
     }
 
     private fun scrapeFaculty(faculty: Faculty, url: String): List<NewsEntity> {
+
         val doc = Jsoup.connect(url)
             .userAgent(USER_AGENT)
             .timeout(15_000)
             .get()
 
-        // Selectores genéricos: intenta <article>, si no hay, cae a enlaces con h2/h3.
+        // Si la URL pertenece a Telegram usamos sus selectores específicos.
+        if (url.contains("t.me/")) {
+
+            val posts = doc.select(".tgme_widget_message")
+
+            val now = System.currentTimeMillis()
+
+            return posts.takeLast(15).mapNotNull { post ->
+
+                // Enlace directo de la publicación
+                val link = post.selectFirst(".tgme_widget_message_date")
+                val href = link?.absUrl("href")
+                    ?.ifBlank { null }
+                    ?: return@mapNotNull null
+
+                // Texto de la publicación
+                val text = post.selectFirst(".tgme_widget_message_text")
+                    ?.text()
+                    ?.trim()
+                    ?.ifBlank { null }
+                    ?: return@mapNotNull null
+
+                // Telegram no tiene un "título" como una noticia normal.
+                // Usamos una parte del texto como título.
+                val title = if (text.length > 80) {
+                    text.take(80) + "..."
+                } else {
+                    text
+                }
+
+                // Imagen de la publicación, si existe
+                val image = post.selectFirst(".tgme_widget_message_photo_wrap")
+                    ?.attr("style")
+                    ?.let { style ->
+                        Regex("""background-image:url\(['"]?(.*?)['"]?\)""")
+                            .find(style)
+                            ?.groupValues
+                            ?.getOrNull(1)
+                    }
+
+                NewsEntity(
+                    url = href,
+                    title = title,
+                    summary = text,
+                    imageUrl = image,
+                    facultyId = faculty.id,
+                    facultyName = faculty.displayName,
+                    fetchedAt = now,
+                )
+            }
+        }
+
+        // Para páginas normales mantenemos el scraper que ya tenía el proyecto.
         val nodes: List<Element> = doc.select("article").ifEmpty {
             doc.select("a:has(h2), a:has(h3)")
         }
 
         val now = System.currentTimeMillis()
+
         return nodes.take(15).mapNotNull { el ->
-            val link = if (el.tagName() == "a") el else el.selectFirst("a[href]")
-            val href = link?.absUrl("href")?.ifBlank { null } ?: return@mapNotNull null
-            val title = el.selectFirst("h2, h3")?.text()?.ifBlank { null }
+
+            val link = if (el.tagName() == "a") {
+                el
+            } else {
+                el.selectFirst("a[href]")
+            }
+
+            val href = link?.absUrl("href")
+                ?.ifBlank { null }
+                ?: return@mapNotNull null
+
+            val title = el.selectFirst("h2, h3")
+                ?.text()
+                ?.ifBlank { null }
                 ?: link.text().ifBlank { null }
                 ?: return@mapNotNull null
-            val summary = el.selectFirst("p")?.text().orEmpty()
-            val img = el.selectFirst("img[src]")?.absUrl("src")?.ifBlank { null }
+
+            val summary = el.selectFirst("p")
+                ?.text()
+                .orEmpty()
+
+            val img = el.selectFirst("img[src]")
+                ?.absUrl("src")
+                ?.ifBlank { null }
 
             NewsEntity(
                 url = href,

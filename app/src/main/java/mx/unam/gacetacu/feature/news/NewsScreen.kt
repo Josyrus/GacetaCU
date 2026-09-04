@@ -1,4 +1,4 @@
-package mx.unam.gacetacu.feature.news
+    package mx.unam.gacetacu.feature.news
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,10 +19,15 @@ import mx.unam.gacetacu.GacetaCUApp
 import mx.unam.gacetacu.R
 import mx.unam.gacetacu.core.ViewModelFactory
 import mx.unam.gacetacu.core.data.db.entities.NewsEntity
+import mx.unam.gacetacu.feature.news.ArticleReaderScreen
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NewsScreen(onOpenSettings: () -> Unit = {}) {
+@OptIn(ExperimentalMaterial3Api::class)
+
+fun NewsScreen(
+    onOpenSettings: () -> Unit = {},
+    onOpenArticle: (NewsEntity) -> Unit = {}
+) {
     val app = LocalContext.current.applicationContext as GacetaCUApp
     val viewModel: NewsViewModel = viewModel(
         factory = ViewModelFactory { NewsViewModel(app.container.newsRepository) }
@@ -93,15 +98,22 @@ fun NewsScreen(onOpenSettings: () -> Unit = {}) {
             }
         } else {
             LazyColumn(Modifier.fillMaxSize()) {
-                items(state.items, key = { it.url }) { news -> NewsCard(news) }
+                items(state.items, key = { it.url }) { news ->
+                    NewsCard(
+                        news = news,
+                        onOpenArticle = onOpenArticle
+                    )
+                }
             }
         }
     }
 }
 
-@Composable
-private fun NewsCard(news: NewsEntity) {
-    val uriHandler = androidx.compose.ui.platform.LocalUriHandler.current
+    @Composable
+    private fun NewsCard(
+        news: NewsEntity,
+        onOpenArticle: (NewsEntity) -> Unit
+    ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -122,11 +134,17 @@ private fun NewsCard(news: NewsEntity) {
             Text(news.title, style = MaterialTheme.typography.titleMedium)
             if (news.summary.isNotBlank()) {
                 Spacer(Modifier.height(4.dp))
-                Text(news.summary, style = MaterialTheme.typography.bodyMedium, maxLines = 3)
+                Text(
+                    news.summary,
+                    style = MaterialTheme.typography.bodyMedium,
+                    maxLines = 3
+                )
             }
+
             Spacer(Modifier.height(8.dp))
-            TextButton(onClick = { uriHandler.openUri(news.url) }) {
-                Text(stringResource(R.string.news_read_more))
+
+            TextButton(onClick = { onOpenArticle(news) }) {
+                Text("Leer noticia")
             }
         }
     }

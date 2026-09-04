@@ -69,8 +69,9 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("io.coil-kt:coil-compose:2.6.0")
 
-    // Maps (OpenStreetMap)
+    // Maps (OpenStreetMap / MapLibre)
     implementation("org.osmdroid:osmdroid-android:6.1.18")
+    implementation("org.maplibre.gl:android-sdk:11.5.1")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")

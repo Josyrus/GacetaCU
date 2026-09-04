@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import mx.unam.gacetacu.core.data.db.entities.NewsEntity
 import mx.unam.gacetacu.core.model.FacultyCatalog
-
+import mx.unam.gacetacu.feature.news.ArticleReaderScreen
 data class NewsUiState(
     val items: List<NewsEntity> = emptyList(),
     val selectedFacultyId: String? = null, // null = todas
