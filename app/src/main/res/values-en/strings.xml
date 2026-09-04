@@ -46,6 +46,11 @@
     <string name="map_title">Ciudad Universitaria Map</string>
     <string name="map_filter_faculty">Filter buildings by faculty</string>
     <string name="map_show_all">Show all</string>
+    <string name="map_toggle_3d">Toggle 3D view</string>
+    <string name="map_download_offline">Download offline map</string>
+    <string name="map_download_offline_description">Do you want to download the Ciudad Universitaria map for offline use? (approx. 50MB)</string>
+    <string name="action_download">Download</string>
+    <string name="action_cancel">Cancel</string>
 
     <string name="settings_title">Settings</string>
     <string name="settings_language">Language</string>

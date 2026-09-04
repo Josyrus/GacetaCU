@@ -46,6 +46,11 @@
     <string name="map_title">大学城地图</string>
     <string name="map_filter_faculty">按学院筛选建筑</string>
     <string name="map_show_all">显示全部</string>
+    <string name="map_toggle_3d">切换3D视图</string>
+    <string name="map_download_offline">下载离线地图</string>
+    <string name="map_download_offline_description">您想下载大学城地图以便离线使用吗？（约50MB）</string>
+    <string name="action_download">下载</string>
+    <string name="action_cancel">取消</string>
 
     <string name="settings_title">设置</string>
     <string name="settings_language">语言</string>
